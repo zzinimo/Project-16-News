@@ -1,0 +1,42 @@
+/* Roboto */
+
+@font-face {
+  src: url(../vendor/fonts/roboto-900.woff) format("woff");
+  font-family: "Roboto";
+  font-style: bold;
+  font-weight: 900;
+}
+
+@font-face {
+  src: url(../vendor/fonts/roboto-500.woff) format("woff");
+  font-family: "RobotoNormal";
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  src: url("../vendor/fonts/roboto-slab-700.woff") format(woff);
+  font-family: "Roboto-Slab";
+  font-weight: 700;
+}
+
+@font-face {
+  src: url("../vendor/fonts/roboto-slab-400-regular.woff") format(woff);
+  font-family: "Roboto-Slab-400";
+  font-weight: 400;
+}
+
+@font-face {
+  src: url("../vendor/fonts/inter-400-regular.woff") format(woff);
+  font-family: "Roboto-400";
+  font-weight: 400;
+}
+
+/* Inter */
+
+@font-face {
+  src: url("../vendor/fonts/inter-400-regular.woff") format(woff);
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+}

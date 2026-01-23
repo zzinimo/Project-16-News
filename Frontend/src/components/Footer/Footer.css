@@ -1,0 +1,29 @@
+.footer__content{
+	display: flex; 
+	justify-content: space-between;
+}
+
+.footer__copyright{
+	margin-left: 104px; 
+	color:#B6BCBF; 
+}
+
+.footer__links{
+	display: flex; 
+	gap: 40px; 
+	margin-right: 106px; 
+
+}
+
+.footer__links-link{
+	text-decoration: none;
+	color: black; 
+	font-family: "Roboto-400";
+	font-size: 18px; 
+	line-height: 24px;
+}
+
+.footer__links-link_home{
+	
+}
+

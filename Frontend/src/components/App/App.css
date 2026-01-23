@@ -1,0 +1,15 @@
+.app {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.app__hero-section {
+  width: 100%;
+  min-height: 650px;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../../assets/MainBackground-image.jpg");
+  background-size: 120%;
+  background-position: center;
+}

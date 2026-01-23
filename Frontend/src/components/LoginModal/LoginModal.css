@@ -1,0 +1,120 @@
+.login__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.login__form {
+  margin: 0 auto;
+  padding: 34px;
+  position: relative;
+  background-color: #ffffff;
+  width: 430px;
+  min-height: 380px;
+  border-radius: 16px;
+}
+
+.login__modal-close-btn {
+  position: absolute;
+  right: -40px;
+  top: -60px;
+  background: transparent;
+  border: none;
+}
+
+.login__form-title {
+  margin-bottom: 22px;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+}
+
+.login__modal-content {
+}
+
+.login__modal-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__form-label {
+  color: #2f71e5;
+  margin-bottom: 31px;
+  font-family: "Inter", sans-serif;
+}
+
+.login__form-input {
+  width: 100%;
+  border-top: none;
+  border-bottom: 1px solid #b6bcbf;
+  border-left: none;
+  border-right: none;
+  margin-top: 8px;
+  line-height: 24px;
+  font-size: 14px;
+}
+
+.login__form-input::placeholder {
+  color: #b6bcbf;
+}
+
+.login__form-input:focus {
+  outline: none;
+  border-bottom: 2px solid black;
+}
+
+.login__form-error {
+  color: red;
+}
+
+.login__form-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__form-submit-btn {
+  max-width: 358px;
+  width: 100%;
+  height: 64px;
+  margin-top: 39px;
+  border-radius: 100px;
+  border: none;
+  background: #2f71e5;
+  color: white;
+  font-family: "RobotoNormal", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.login__form-submit-btn:disabled {
+  max-width: 358px;
+  width: 100%;
+  height: 64px;
+  margin-top: 39px;
+  border-radius: 100px;
+  border: none;
+  background: #e6e8eb;
+  color: #b6bcbf;
+  font-family: "RobotoNormal", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.login__form-footer-sign-up-btn {
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 100%;
+  color: #2f71e5;
+  border: none;
+}
