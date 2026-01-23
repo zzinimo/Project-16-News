@@ -1,7 +1,9 @@
+import { useState } from "react";
 import "./NewsCard.css";
 
 function NewsCard({ cards }) {
-  // In NewsCard.jsx
+  const [cardsToShow, setCardsToShow] = useState(3);
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
@@ -11,11 +13,20 @@ function NewsCard({ cards }) {
     });
   };
 
+  const handleShowMoreClick = () => {
+    console.log(cardsToShow);
+    setCardsToShow((prevData) => {
+      return prevData + 3;
+    });
+  };
+
   return (
     <div className="card__section">
-      <h1 className="card__section-title">Search results</h1>
+      {cards.length > 0 && (
+        <h1 className="card__section-title">Search results</h1>
+      )}
       <ul className="card__container">
-        {cards.map((card) => {
+        {cards.slice(0, cardsToShow).map((card) => {
           return (
             <li key={card.url} className="card">
               <img
@@ -33,6 +44,16 @@ function NewsCard({ cards }) {
           );
         })}
       </ul>
+      {cards.length > 0 && cardsToShow < cards.length && (
+        <div className="card__section-button-container">
+          <button
+            onClick={handleShowMoreClick}
+            className="card__section-button"
+          >
+            Show More
+          </button>
+        </div>
+      )}
     </div>
   );
 }
