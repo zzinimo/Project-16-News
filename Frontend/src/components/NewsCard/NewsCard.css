@@ -20,6 +20,7 @@
 }
 
 .card {
+  position: relative;
   list-style: none;
   max-width: 400px;
   max-width: 400px;
@@ -28,9 +29,16 @@
   border-radius: 8px;
   object-fit: contain;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
+}
+
+.card__save-btn {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  width: 40px;
+  height: 40px;
 }
 
 .card__image {

@@ -1,8 +1,20 @@
 import { useState } from "react";
 import "./NewsCard.css";
+import saved from "../../assets/saved.svg";
+import savedHover from "../../assets/savedHover.svg";
+import savedNormal from "../../assets/savedNormal.svg";
 
-function NewsCard({ cards }) {
+function NewsCard({ cards, handleSaveClick, savedCards }) {
   const [cardsToShow, setCardsToShow] = useState(3);
+  const [saveButton, setSaveButton] = useState(savedNormal);
+
+  console.log("saved cards :", savedCards);
+
+  const isSaved = (card) => {
+    return savedCards.some((individualCard) => {
+      return card.url === individualCard.url;
+    });
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -14,7 +26,6 @@ function NewsCard({ cards }) {
   };
 
   const handleShowMoreClick = () => {
-    console.log(cardsToShow);
     setCardsToShow((prevData) => {
       return prevData + 3;
     });
@@ -29,6 +40,12 @@ function NewsCard({ cards }) {
         {cards.slice(0, cardsToShow).map((card) => {
           return (
             <li key={card.url} className="card">
+              <img
+                onClick={() => handleSaveClick(card)}
+                className="card__save-btn"
+                src={isSaved(card) ? saved : savedNormal}
+                alt="Save Button"
+              />
               <img
                 className="card__image"
                 src={card.urlToImage}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import closeButton from "../../assets/closeButton.svg";
 
-function LoginModal({ setActiveModal }) {
+function LoginModal({ setActiveModal, setIsLoggedIn, isLoggedIn }) {
   const [emailError, setEmailError] = useState("");
   const [formValue, setFormValue] = useState({ email: "", password: "" });
 
@@ -32,6 +32,12 @@ function LoginModal({ setActiveModal }) {
 
   const handleSignupBtnClick = () => {
     setActiveModal("signUpModal");
+  };
+
+  const signInBtnClick = (e) => {
+    e.preventDefault(); // Prevent form submission/page refresh
+    setIsLoggedIn(true);
+    setActiveModal("");
   };
 
   return (
@@ -87,6 +93,7 @@ function LoginModal({ setActiveModal }) {
                 !formValue.password ||
                 !formValue.email.includes("@")
               }
+              onClick={signInBtnClick}
             >
               Sign in
             </button>
