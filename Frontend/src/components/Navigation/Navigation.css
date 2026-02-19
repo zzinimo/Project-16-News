@@ -11,12 +11,20 @@
   font-size: 18px;
   line-height: 22px;
   width: 49px;
-  border-top: none;
-  border-bottom: 3px solid white;
-  border-right: none;
-  border-left: none;
+  border: none;
   padding: 30px 0 26px;
   background: transparent;
+  text-decoration: none;
+}
+
+/* Active link underline */
+.navigation__content-button_active {
+  border-bottom: 3px solid white !important;
+}
+
+/* Active link on profile page */
+.navigation__content-button_profile.navigation__content-button_active {
+  border-bottom: 3px solid #1a1b22 !important;
 }
 
 .navigation__content-button_type_saved {
@@ -24,25 +32,49 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  color: #b6bcbf;
+  color: white;
   margin-left: 42px;
   background: transparent;
   border: none;
-  font-size: 18px;
-  line-height: 24px;
+  padding: 30px 0 26px;
+  text-decoration: none;
 }
 
 .navigation__content-button_type_sign-in {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
   font-family: "RobotoNormal", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   color: white;
-  margin-right: 104px;
+  margin-right: 40px;
   margin-left: 42px;
-  width: 152px;
+  min-width: 112px;
+  padding: 0 20px;
   height: 48px;
   background: transparent;
   border: 1px solid white;
   border-radius: 100px;
+}
+
+/* Profile page variant styles */
+.navigation__content-button_profile {
+  color: #1a1b22 !important;
+  border-color: #1a1b22 !important;
+}
+
+@media screen and (max-width: 425px) {
+  .navigation__content-buttons {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .navigation__content-button_type_sign-in {
+    margin: 0 40px 0 40px;
+  }
 }

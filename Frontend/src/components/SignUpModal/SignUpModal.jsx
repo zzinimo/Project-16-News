@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./SignUpModal.css";
 import closeButton from "../../assets/closeButton.svg";
 
-function SignUpModal({ setActiveModal }) {
+function SignUpModal({ setActiveModal, setUserName }) {
   const [emailError, setEmailError] = useState("");
   const [formValue, setFormValue] = useState({
     email: "",
@@ -33,6 +33,7 @@ function SignUpModal({ setActiveModal }) {
 
   const handleSignUpBtnClick = () => {
     setActiveModal("success");
+    setUserName(formValue.username);
   };
 
   return (

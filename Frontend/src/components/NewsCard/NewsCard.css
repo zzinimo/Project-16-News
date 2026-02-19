@@ -19,79 +19,6 @@
   gap: 15px;
 }
 
-.card {
-  position: relative;
-  list-style: none;
-  max-width: 400px;
-  max-width: 400px;
-  width: 100%;
-  min-height: 576px;
-  border-radius: 8px;
-  object-fit: contain;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.card__save-btn {
-  position: absolute;
-  right: 24px;
-  top: 24px;
-  width: 40px;
-  height: 40px;
-}
-
-.card__image {
-  width: 100%;
-  max-height: 272px;
-}
-
-.card__text-content {
-  margin: 0 22px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.card__date {
-  font-size: 18px;
-  line-height: 24px;
-  color: #b6bcbf;
-  font-family: "Inter", sans-serif;
-  margin-top: 20px;
-}
-
-.card__title {
-  font-size: 26px;
-  font-family: "Roboto-slab-400", sans-serif;
-  line-height: 30px;
-  font-weight: 400;
-  color: #1a1b22;
-  margin-top: 12px;
-}
-
-.card__description {
-  font-size: 16px;
-  font-family: "RobotoNormal", sans-serif;
-  font-weight: 400;
-  margin-top: 16px;
-  line-height: 22px;
-  color: #1a1b22;
-}
-
-.card__author {
-  font-family: "Roboto-Slab", sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  margin-top: auto;
-  margin-bottom: 24px;
-  font-size: 16px;
-  font-family: "RobotoNormal", sans-serif;
-  line-height: 22px;
-  color: #b6bcbf;
-}
-
 .card__section-button-container {
   width: 100%;
   display: flex;
@@ -111,4 +38,24 @@
   background: #e8e8e8;
   color: #1a1b22;
   cursor: pointer;
+}
+
+@media screen and (max-width: 425px) {
+  .card__section-title {
+    font-size: 30px;
+    padding: 0 0 0 16px;
+  }
+  .card__section-button {
+    margin-bottom: 24px;
+  }
+
+  .card__section-title {
+    margin-bottom: 58px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .card__section-button {
+    margin-top: 32px;
+  }
 }

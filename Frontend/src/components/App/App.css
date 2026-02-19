@@ -2,6 +2,13 @@
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app__content {
+  flex: 1;
 }
 
 .app__hero-section {
@@ -10,6 +17,7 @@
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url("../../assets/MainBackground-image.jpg");
-  background-size: 120%;
+  background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }

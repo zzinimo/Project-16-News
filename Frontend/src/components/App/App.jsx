@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //fonts photos and css
 import "../../vendor/fonts.css";
@@ -24,19 +25,60 @@ import NewsCard from "../NewsCard/NewsCard";
 
 // from utils
 import { getNews, apiKey, newsApiBaseUrl } from "../../utils/NewsApi";
+import { checkToken } from "../../utils/auth";
 
 function App() {
   // state
   const [activeModal, setActiveModal] = useState("");
+  const [userName, setUserName] = useState(null);
   const [cards, setCards] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [savedCards, setSavedCards] = useState([
-    { url: "", urlToImage: "", title: "", author: "", description: "" },
-  ]);
+  const [savedCards, setSavedCards] = useState([]);
+  const [clickedUrl, setClickedUrl] = useState(null);
+  const [userSearch, setUserSearch] = useState([]);
+  const [searchAttempted, setSearchAttempted] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleDeleteClick = (cardToDelete) => {
+    if (savedCards.some((card) => card.url === cardToDelete.url)) {
+      setSavedCards(
+        savedCards.filter((alreadySavedCard) => {
+          return alreadySavedCard.url !== cardToDelete.url;
+        }),
+      );
+    }
+  };
+
+  const handleSaveClick = (cardtosave) => {
+    // If user is not logged in, show sign-in prompt instead
+    if (!isLoggedIn) {
+      handleSaveClickNotLoggedIn(cardtosave.url);
+      return;
+    }
+
+    // If card is already saved, UNSAVE it
+    if (savedCards.some((card) => card.url === cardtosave.url)) {
+      setSavedCards(
+        savedCards.filter((alreadySavedCard) => {
+          return alreadySavedCard.url !== cardtosave.url;
+        }),
+      );
+      return;
+    }
+    setSavedCards((prevCards) => {
+      return [...prevCards, { ...cardtosave, searchTerm: userSearch }];
+    });
+  };
+
+  const handleSaveClickNotLoggedIn = (cardUrl) => {
+    setClickedUrl(cardUrl);
+  };
 
   const handleSearchButtonClick = (searchTerm) => {
-    return getNews(searchTerm, "2026-01-15", "2026-01-22")
+    setSearchAttempted(true);
+    return getNews(searchTerm, "2026-01-30", "2026-02-10")
       .then((data) => {
         setCards(data.articles);
         setIsLoading(false);
@@ -47,22 +89,30 @@ function App() {
       });
   };
 
-  // LEFT HERE
-  const handleSaveClick = (cardtosave) => {
-    // If card is already saved, UNSAVE it
-    if (savedCards.some((card) => card.url === cardtosave.url)) {
-      setSavedCards(
-        savedCards.filter((alreadySavedCard) => {
-          return alreadySavedCard.url !== cardtosave.url; // Keep all cards EXCEPT this one
-        }),
-      );
-      return; // Exit early - don't run the save logic below
-    }
-    // If card is NOT saved, SAVE it
-    setSavedCards((prevCards) => {
-      return [...prevCards, cardtosave];
-    });
+  const handleLogOutClick = (e) => {
+    setIsLoggedIn(false);
+    navigate("/", { replace: true });
   };
+
+  useEffect(() => {
+    async function checkUserToken() {
+      console.log("from app.jsx", localStorage);
+      try {
+        const token = localStorage.getItem("token");
+        if (token) {
+          const user = await checkToken(token);
+          setIsLoggedIn(true);
+          setUserName(user.data.name);
+        } else {
+          console.log("an error has occurred, loggin out");
+          setIsLoggedIn(false);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    checkUserToken();
+  }, []);
 
   return (
     <activeModalContext.Provider value={{ activeModal, setActiveModal }}>
@@ -77,34 +127,76 @@ function App() {
             />
           )}
           {activeModal === "signUpModal" && (
-            <SignUpModal setActiveModal={setActiveModal} />
+            <SignUpModal
+              setUserName={setUserName}
+              setActiveModal={setActiveModal}
+            />
           )}
           {activeModal === "success" && (
             <SuccessModal setActiveModal={setActiveModal} />
           )}
-          <div className="app__hero-section">
-            <Header isLoggedIn={isLoggedIn} />
+          <div className="app__content">
             <Routes>
               <Route
                 path="/"
                 element={
-                  <Main
-                    handleSearchButtonClick={handleSearchButtonClick}
-                    isLoading={isLoading}
-                  />
+                  <>
+                    <div className="app__hero-section">
+                      <Header
+                        handleLogOutClick={handleLogOutClick}
+                        userName={userName}
+                        isLoggedIn={isLoggedIn}
+                        setActiveModal={setActiveModal}
+                      />
+                      <Main
+                        handleSearchButtonClick={handleSearchButtonClick}
+                        isLoading={isLoading}
+                        setUserSearch={setUserSearch}
+                        userSearch={userSearch}
+                      />
+                    </div>
+                    {isLoading && <Preloader />}
+                    <NewsCard
+                      handleSaveClick={handleSaveClick}
+                      cards={cards}
+                      savedCards={savedCards}
+                      isLoggedIn={isLoggedIn}
+                      handleSaveClickNotLoggedIn={handleSaveClickNotLoggedIn}
+                      clickedUrl={clickedUrl}
+                      handleDeleteClick={handleDeleteClick}
+                      setSearchAttempted={setSearchAttempted}
+                      searchAttempted={searchAttempted}
+                      isLoading={isLoading}
+                    />
+                    <About />
+                  </>
                 }
               ></Route>
-              <Route path="/saved-news" element={<ProfilePage />}></Route>
+              <Route
+                path="/saved-news"
+                element={
+                  <>
+                    <div className="profile-section">
+                      <Header
+                        handleLogOutClick={handleLogOutClick}
+                        userName={userName}
+                        isLoggedIn={isLoggedIn}
+                        variant="profile"
+                        setActiveModal={setActiveModal}
+                      />
+                    </div>
+                    <ProfilePage
+                      userSearch={userSearch}
+                      savedCards={savedCards}
+                      handleDeleteClick={handleDeleteClick}
+                      userName={userName}
+                    />
+                  </>
+                }
+              ></Route>
             </Routes>
           </div>
-          {isLoading && <Preloader />}
 
-          <NewsCard
-            handleSaveClick={handleSaveClick}
-            cards={cards}
-            savedCards={savedCards}
-          />
-          <About />
           <Footer />
         </div>
       </isLoadingContext.Provider>

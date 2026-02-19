@@ -1,34 +1,93 @@
-.about__content{
-	width: 100%; 
-	display: flex; 
-	 padding: 0 0 80px 104px; 
-	
+.about__content {
+  width: 100%;
+  display: flex;
+  padding: 0 0 80px 104px;
 }
 
-.about__content-avatar{
-	margin-top: 80px; 
+.about__content-avatar {
+  margin-top: 80px;
 }
 
-.about__content-text{
-	max-width: 600px; 
-	width: 100%; 
-	margin: 0 150px 0 56px; 
+.about__content-text {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 150px 0 56px;
 }
 
-.about__content-text-title{
-	font-family: "Roboto-Slab-400", sans-serif;
-	font-weight: 400;
-	font-size: 40px; 
-	line-height: 46px; 
-	margin-top: 131px; 
+.about__content-text-title {
+  font-family: "Roboto-Slab-400", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  margin-top: 131px;
 }
 
-.about__content-text-subtext{
-	font-size: 18px;  
-	font-family: "Roboto-400", sans-serif;
-	line-height: 24px;
+.about__content-text-subtext {
+  font-size: 18px;
+  font-family: "Roboto-400", sans-serif;
+  line-height: 24px;
 }
 
-.about__content-text-subtext-about{
-	margin: 24px 0 20px; 
+.about__content-text-subtext-about {
+  margin: 24px 0 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .about__content {
+    display: block;
+    padding: 0 24px;
+  }
+
+  .about__content-avatar {
+    margin: 32px auto 0;
+    width: 272px;
+    height: 272px;
+    display: block;
+  }
+
+  .about__content-text {
+    margin: 0 auto;
+  }
+
+  .about__content-text-title {
+    text-align: center;
+    max-width: 272px;
+    width: 100%;
+    font-size: 30px;
+    margin-top: 24px;
+    line-height: 40px;
+  }
+
+  .about__content-text-subtext {
+    font-size: 18px;
+    font-family: "Roboto-400", sans-serif;
+    line-height: 24px;
+    text-align: left; /* Override parent center */
+  }
+
+  .about__content-text-subtext-experience {
+    margin-bottom: 128px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 1000px) {
+  .about__content {
+    padding: 61px 20px 61px 40px;
+  }
+
+  .about__content-avatar {
+    width: 232px;
+    height: 232px;
+    margin: 61px 32px 0 0;
+  }
+
+  .about__content-text {
+    margin: 0 auto;
+  }
+
+  .about__content-text-title {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 40px;
+  }
 }

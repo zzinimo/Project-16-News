@@ -1,7 +1,7 @@
 import "./Main.css";
 import SearchForm from "../SearchForm/SearchForm";
 
-function Main({ handleSearchButtonClick }) {
+function Main({ handleSearchButtonClick, setUserSearch, userSearch }) {
   return (
     <div className="main__content">
       <div className="main__content-text">
@@ -11,7 +11,11 @@ function Main({ handleSearchButtonClick }) {
           account
         </p>
       </div>
-      <SearchForm handleSearchButtonClick={handleSearchButtonClick} />
+      <SearchForm
+        setUserSearch={setUserSearch}
+        handleSearchButtonClick={handleSearchButtonClick}
+        userSearch={userSearch}
+      />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import "./LoginModal.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import closeButton from "../../assets/closeButton.svg";
+import { authorize, checkToken } from "../../utils/auth";
 
 function LoginModal({ setActiveModal, setIsLoggedIn, isLoggedIn }) {
   const [emailError, setEmailError] = useState("");
@@ -34,10 +35,16 @@ function LoginModal({ setActiveModal, setIsLoggedIn, isLoggedIn }) {
     setActiveModal("signUpModal");
   };
 
-  const signInBtnClick = (e) => {
+  const signInBtnClick = async (e) => {
     e.preventDefault(); // Prevent form submission/page refresh
-    setIsLoggedIn(true);
-    setActiveModal("");
+    try {
+      const token = await authorize(formValue.email, formValue.password);
+      localStorage.setItem("token", token.token);
+      setIsLoggedIn(true);
+      setActiveModal("");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

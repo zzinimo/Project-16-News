@@ -118,3 +118,11 @@
   color: #2f71e5;
   border: none;
 }
+
+@media screen and (max-width: 425px) {
+  .login__modal-close-btn {
+    right: 16px;
+    width: 24px;
+    height: 24px;
+  }
+}

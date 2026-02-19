@@ -2,10 +2,8 @@ import { useState, useContext } from "react";
 import { isLoadingContext } from "../../contexts";
 import "./SearchForm.css";
 
-function SearchForm({ handleSearchButtonClick }) {
+function SearchForm({ handleSearchButtonClick, userSearch, setUserSearch }) {
   const { isLoading, setIsLoading } = useContext(isLoadingContext);
-
-  const [userSearch, setUserSearch] = useState("");
 
   const handleInputChange = (e) => {
     setUserSearch(e.target.value);
@@ -24,6 +22,7 @@ function SearchForm({ handleSearchButtonClick }) {
     <form className="search__container" onSubmit={handleSubmit}>
       <input
         type="text"
+        name="text"
         value={userSearch}
         className="search__container-input"
         placeholder="Enter topic"
