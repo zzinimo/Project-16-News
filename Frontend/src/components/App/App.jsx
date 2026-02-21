@@ -32,7 +32,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [userName, setUserName] = useState(null);
   const [cards, setCards] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [savedCards, setSavedCards] = useState([]);
   const [clickedUrl, setClickedUrl] = useState(null);
