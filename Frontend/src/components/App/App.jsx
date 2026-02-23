@@ -78,7 +78,7 @@ function App() {
 
   const handleSearchButtonClick = (searchTerm) => {
     setSearchAttempted(true);
-    return getNews(searchTerm, "2026-01-30", "2026-02-10")
+    return getNews(searchTerm, "2026-02-16", "2026-02-23")
       .then((data) => {
         setCards(data.articles);
         setIsLoading(false);

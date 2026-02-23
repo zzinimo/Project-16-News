@@ -22,12 +22,10 @@ function Header({
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen, " from toggleMenu function");
   };
 
   const handleItemClick = (item) => {
     if (item === "Sign in") {
-      console.log(item);
       setActiveModal("loginModal");
     } else if (item === "Home") {
       navigate("/");
