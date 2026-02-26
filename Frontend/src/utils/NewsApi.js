@@ -1,15 +1,11 @@
 const apiKey = "322c53d44886425f8347b03e604f7ee3";
 
-const newsApiBaseUrl = import.meta.env.PROD
-  ? "https://nomoreparties.co/news/v2/everything"
-  : "https://newsapi.org/v2/everything";
+const newsApiBaseUrl = "https://newsapi.org/v2/everything";
 
 const getNews = (q, from, to, pageSize = 100, sortBy = "popularity") => {
   const url = `${newsApiBaseUrl}?q=${q}&from=${from}&to=${to}&pageSize=${pageSize}&sortBy=${sortBy}`;
 
-  const headers = import.meta.env.PROD
-    ? {}
-    : { authorization: `Bearer ${apiKey}` };
+  const headers = { authorization: `Bearer ${apiKey}` };
 
   return fetch(url, {
     method: "GET",
