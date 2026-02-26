@@ -3,13 +3,15 @@ const apiKey = "322c53d44886425f8347b03e604f7ee3";
 const newsApiBaseUrl = "https://newsapi.org/v2/everything";
 
 const getNews = (q, from, to, pageSize = 100, sortBy = "popularity") => {
-  const url = `${newsApiBaseUrl}?q=${q}&from=${from}&to=${to}&pageSize=${pageSize}&sortBy=${sortBy}`;
-
-  const headers = { authorization: `Bearer ${apiKey}` };
+  const apiUrl = `${newsApiBaseUrl}?q=${q}&from=${from}&to=${to}&pageSize=${pageSize}&sortBy=${sortBy}&apiKey=${apiKey}`;
+  
+  // Use CORS proxy only in production
+  const url = import.meta.env.PROD 
+    ? `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`
+    : apiUrl;
 
   return fetch(url, {
     method: "GET",
-    headers,
   })
     .then((res) => {
       if (res.ok) {
