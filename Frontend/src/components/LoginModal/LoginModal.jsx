@@ -1,10 +1,9 @@
 import "./LoginModal.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import closeButton from "../../assets/closeButton.svg";
-import { authorize, checkToken } from "../../utils/auth";
+import { useState, useEffect } from "react";
+import { authorize } from "../../utils/auth";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal({ setActiveModal, setIsLoggedIn, isLoggedIn }) {
+function LoginModal({ setActiveModal, setIsLoggedIn }) {
   const [emailError, setEmailError] = useState("");
   const [formValue, setFormValue] = useState({ email: "", password: "" });
 
@@ -47,76 +46,79 @@ function LoginModal({ setActiveModal, setIsLoggedIn, isLoggedIn }) {
     }
   };
 
-  return (
-    <>
-      <div className="login__modal">
-        <form className="login__form">
-          <button
-            className="login__modal-close-btn"
-            type="button"
-            onClick={handleCloseModal}
-          >
-            <img src={closeButton} alt="Close" />
-          </button>
-          <h1 className="login__form-title"> Sign in</h1>
+  useEffect(() => {
+    const handleEscapeKey = (e) => {
+      if (e.key === "Escape") {
+        setActiveModal("");
+      }
+    };
 
-          <div className="login__modal-content">
-            <div className="login__modal-labels">
-              <label htmlFor="email" className="login__form-label">
-                Email
-                <input
-                  id="email"
-                  name="email"
-                  type="text"
-                  placeholder="Enter email"
-                  className="login__form-input"
-                  value={formValue.email}
-                  onChange={handleChange}
-                />
-                {emailError && (
-                  <span className="login__form-error">{emailError}</span>
-                )}
-              </label>
-              <label htmlFor="password" className="login__form-label">
-                Password
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Enter password"
-                  className="login__form-input"
-                  value={formValue.password}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-          </div>
-          <div className="login__form-footer">
-            <button
-              type="submit"
-              className="login__form-submit-btn"
-              disabled={
-                !formValue.email ||
-                !formValue.password ||
-                !formValue.email.includes("@")
-              }
-              onClick={signInBtnClick}
-            >
-              Sign in
-            </button>
-            <p>
-              {"or "}
-              <button
-                className="login__form-footer-sign-up-btn"
-                onClick={handleSignupBtnClick}
-              >
-                Sign up
-              </button>
-            </p>
-          </div>
-        </form>
-      </div>
-    </>
+    const handleOverlayClick = (e) => {
+      if (e.target.classList.contains("login")) {
+        setActiveModal("");
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
+    document.addEventListener("click", handleOverlayClick);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+      document.removeEventListener("click", handleOverlayClick);
+    };
+  }, [setActiveModal]);
+
+  return (
+    <ModalWithForm
+      blockName="login"
+      title="Sign in"
+      onClose={handleCloseModal}
+      onSubmit={signInBtnClick}
+      isSubmitDisabled={
+        !formValue.email ||
+        !formValue.password ||
+        !formValue.email.includes("@")
+      }
+      submitButtonText="Sign in"
+      footer={
+        <p>
+          {"or "}
+          <button
+            type="button"
+            className="login__sign-up-btn"
+            onClick={handleSignupBtnClick}
+          >
+            Sign up
+          </button>
+        </p>
+      }
+    >
+      <label htmlFor="email" className="login__label">
+        Email
+        <input
+          id="email"
+          name="email"
+          type="text"
+          placeholder="Enter email"
+          className="login__input"
+          value={formValue.email}
+          onChange={handleChange}
+        />
+        {emailError && <span className="login__error">{emailError}</span>}
+      </label>
+      <label htmlFor="password" className="login__label">
+        Password
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Enter password"
+          className="login__input"
+          value={formValue.password}
+          onChange={handleChange}
+        />
+      </label>
+    </ModalWithForm>
   );
 }
 

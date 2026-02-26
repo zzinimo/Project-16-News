@@ -5,30 +5,30 @@ import linkedinLogo from "../../assets/Linkedin.svg";
 
 function Footer() {
   return (
-    <div className="footer__content">
+    <footer className="footer">
       <p className="footer__copyright">
         &copy; 2024 Supersite, Powered by News API
       </p>
-      <div className="footer__links-container">
-        <div className="footer__nav-links">
-          <Link to="/" className="footer__links-link">
+      <div className="footer__links">
+        <div className="footer__nav">
+          <Link to="/" className="footer__link">
             Home
           </Link>
-          <a href="https://tripleten.com/" className="footer__links-link">
+          <a href="https://tripleten.com/" className="footer__link">
             TripleTen
           </a>
         </div>
 
-        <div className="footer__social-links">
-          <a href="google.com/" className="footer__links-link">
+        <div className="footer__social">
+          <a href="google.com/" className="footer__link">
             <img src={gitHubLogo} alt="Git Hub Logo" />
           </a>
-          <a href="espn.com" className="footer__links-link">
+          <a href="espn.com" className="footer__link">
             <img src={linkedinLogo} alt="Linkedin Logo" />
           </a>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 

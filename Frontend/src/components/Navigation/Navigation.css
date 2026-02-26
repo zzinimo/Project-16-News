@@ -4,6 +4,14 @@
   align-items: center;
 }
 
+.navigation__content-button {
+  transition: font-size 0.1s ease;
+}
+
+.navigation__content-button:hover {
+  font-size: 20px;
+}
+
 .navigation__content-button_type_home {
   color: white;
   font-family: "RobotoNormal", sans-serif;
@@ -59,6 +67,7 @@
   background: transparent;
   border: 1px solid white;
   border-radius: 100px;
+  cursor: pointer;
 }
 
 /* Profile page variant styles */

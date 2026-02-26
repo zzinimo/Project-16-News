@@ -1,15 +1,14 @@
 import "./DropdownMenu.css";
-import { useState } from "react";
 
-function DropdownMenu({ isOpen, items, handleItemClick, setActiveModal }) {
+function DropdownMenu({ isOpen, items, handleItemClick }) {
   return (
-    <div className="dropdown__container">
-      <div className="dropdown__container-content">
+    <div className="dropdown">
+      <div className="dropdown__content">
         {isOpen && (
-          <ul className="dropdown__menu">
+          <ul className="dropdown__list">
             {items.map((item, index) => (
               <li
-                className="dropdown__menu-item"
+                className="dropdown__item"
                 key={index}
                 onClick={() => {
                   handleItemClick(item);

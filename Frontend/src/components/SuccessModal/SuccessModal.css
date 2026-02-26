@@ -1,4 +1,4 @@
-.success__modal {
+.success {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.success__modal__content {
+.success__content {
   max-width: 430px;
   width: 100%;
   height: 182;
@@ -21,7 +21,7 @@
   background-color: #ffffff;
 }
 
-.success__lmodal__content_close-btn {
+.success__close-btn {
   background: transparent;
   border: none;
   position: absolute;
@@ -31,7 +31,7 @@
   height: 40px;
 }
 
-.success__modal__content_title {
+.success__title {
   margin: 0;
   font-family: "Roboto", sans-serif;
   font-weight: 900;
@@ -39,7 +39,7 @@
   font-size: 24px;
 }
 
-.success__modal__content_submit-btn {
+.success__submit-btn {
   margin-top: 14px;
   border: none;
   font-size: 18px;

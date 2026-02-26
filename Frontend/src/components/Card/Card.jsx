@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./Card.css";
-import { activeModalContext } from "../../contexts";
+import { ActiveModalContext } from "../../contexts";
 
 function Card({
   card,
@@ -13,7 +13,7 @@ function Card({
   handleDeleteClick,
   variant = "default",
 }) {
-  const { setActiveModal } = useContext(activeModalContext);
+  const { setActiveModal } = useContext(ActiveModalContext);
 
   const [deleteButtonHoverd, setDeleteButtonHoverd] = useState(false);
 

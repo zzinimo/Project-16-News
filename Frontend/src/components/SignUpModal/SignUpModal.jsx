@@ -1,7 +1,6 @@
 import { useState } from "react";
-
 import "./SignUpModal.css";
-import closeButton from "../../assets/closeButton.svg";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function SignUpModal({ setActiveModal, setUserName }) {
   const [emailError, setEmailError] = useState("");
@@ -37,82 +36,68 @@ function SignUpModal({ setActiveModal, setUserName }) {
   };
 
   return (
-    <>
-      <div className="signUp__modal">
-        <form action="signUp__form" className="signUp__form">
-          <button className="signUp__modal-close-btn" type="button">
-            <img src={closeButton} alt="close" onClick={handleCloseModal} />
+    <ModalWithForm
+      blockName="signUp"
+      title="Sign Up"
+      onClose={handleCloseModal}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSignUpBtnClick();
+      }}
+      isSubmitDisabled={
+        !formValue.email ||
+        !formValue.password ||
+        !formValue.username ||
+        !formValue.email.includes("@")
+      }
+      submitButtonText="Sign in"
+      footer={
+        <p>
+          {"or "}
+          <button type="button" className="signUp__sign-in-btn">
+            Sign in
           </button>
-          <h1 className="signUp__form-title">Sign Up</h1>
-
-          <div className="signUp__modal-content">
-            <div className="signUp__modal-labels">
-              <label htmlFor="email" className="signUp__form-label">
-                Email
-                <input
-                  id="email"
-                  name="email"
-                  type="text"
-                  placeholder="Enter email"
-                  className="signUp__form-input"
-                  value={formValue.email}
-                  onChange={handleChange}
-                />
-                {emailError && (
-                  <span class="signUp__form-error">{emailError}</span>
-                )}
-              </label>
-              <label htmlFor="password" className="signUp__form-label">
-                Password
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Enter email"
-                  className="signUp__form-input"
-                  value={formValue.password}
-                  onChange={handleChange}
-                />
-              </label>
-              <label htmlFor="username" className="signUp__form-label">
-                Username
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  placeholder="Enter your username"
-                  className="signUp__form-input"
-                  value={formValue.username}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-          </div>
-          <div className="signUp__form-footer">
-            <button
-              type="submit"
-              className="signUp__form-btn"
-              onClick={handleSignUpBtnClick}
-              disabled={
-                !formValue.email ||
-                !formValue.password ||
-                !formValue.username ||
-                !formValue.email.includes("@")
-              }
-            >
-              Sign in
-            </button>
-            <p>
-              {"or "}
-
-              <button className="signUp__form-footer-sign-in-btn">
-                Sign in
-              </button>
-            </p>
-          </div>
-        </form>
-      </div>
-    </>
+        </p>
+      }
+    >
+      <label htmlFor="email" className="signUp__label">
+        Email
+        <input
+          id="email"
+          name="email"
+          type="text"
+          placeholder="Enter email"
+          className="signUp__input"
+          value={formValue.email}
+          onChange={handleChange}
+        />
+        {emailError && <span className="signUp__error">{emailError}</span>}
+      </label>
+      <label htmlFor="password" className="signUp__label">
+        Password
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Enter email"
+          className="signUp__input"
+          value={formValue.password}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="username" className="signUp__label">
+        Username
+        <input
+          id="username"
+          name="username"
+          type="text"
+          placeholder="Enter your username"
+          className="signUp__input"
+          value={formValue.username}
+          onChange={handleChange}
+        />
+      </label>
+    </ModalWithForm>
   );
 }
 

@@ -7,7 +7,7 @@ import "../../vendor/fonts.css";
 import "./App.css";
 
 //contexts
-import { isLoadingContext, activeModalContext } from "../../contexts";
+import { IsLoadingContext, ActiveModalContext } from "../../contexts";
 
 //components
 import Main from "../Main/Main";
@@ -24,7 +24,7 @@ import SuccessModal from "../SuccessModal/SuccessModal";
 import NewsCard from "../NewsCard/NewsCard";
 
 // from utils
-import { getNews, apiKey, newsApiBaseUrl } from "../../utils/NewsApi";
+import { getNews } from "../../utils/NewsApi";
 import { checkToken } from "../../utils/auth";
 
 function App() {
@@ -89,14 +89,13 @@ function App() {
       });
   };
 
-  const handleLogOutClick = (e) => {
+  const handleLogOutClick = () => {
     setIsLoggedIn(false);
     navigate("/", { replace: true });
   };
 
   useEffect(() => {
     async function checkUserToken() {
-      console.log("from app.jsx", localStorage);
       try {
         const token = localStorage.getItem("token");
         if (token) {
@@ -104,7 +103,6 @@ function App() {
           setIsLoggedIn(true);
           setUserName(user.data.name);
         } else {
-          console.log("an error has occurred, loggin out");
           setIsLoggedIn(false);
         }
       } catch (err) {
@@ -115,8 +113,8 @@ function App() {
   }, []);
 
   return (
-    <activeModalContext.Provider value={{ activeModal, setActiveModal }}>
-      <isLoadingContext.Provider value={{ isLoading, setIsLoading }}>
+    <ActiveModalContext.Provider value={{ activeModal, setActiveModal }}>
+      <IsLoadingContext.Provider value={{ isLoading, setIsLoading }}>
         <div className="app">
           {/* modals */}
           {activeModal === "loginModal" && (
@@ -199,8 +197,8 @@ function App() {
 
           <Footer />
         </div>
-      </isLoadingContext.Provider>
-    </activeModalContext.Provider>
+      </IsLoadingContext.Provider>
+    </ActiveModalContext.Provider>
   );
 }
 

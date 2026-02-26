@@ -1,15 +1,15 @@
-.nothing__found-container {
+.notFound {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.nothing__found-image {
+.notFound__image {
   width: 82.5px;
   height: 82.5px;
 }
 
-.nothing__found-title {
+.notFound__title {
   font-family: "Roboto-Slab-400", sans-serif;
   font-weight: 400;
   font-size: 26px;
@@ -17,7 +17,7 @@
   margin: 31.5px 0 16px;
 }
 
-.nothing__found-sub-text {
+.notFound__text {
   font-family: "Roboto-400", sans-serif;
   font-weight: 400;
   font-size: 18px;

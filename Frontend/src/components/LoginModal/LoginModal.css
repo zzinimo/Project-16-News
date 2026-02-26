@@ -1,4 +1,4 @@
-.login__modal {
+.login {
   position: fixed;
   top: 0;
   left: 0;
@@ -22,7 +22,7 @@
   border-radius: 16px;
 }
 
-.login__modal-close-btn {
+.login__close-btn {
   position: absolute;
   right: -40px;
   top: -60px;
@@ -30,27 +30,24 @@
   border: none;
 }
 
-.login__form-title {
+.login__title {
   margin-bottom: 22px;
   font-family: "Roboto", sans-serif;
   font-size: 24px;
 }
 
-.login__modal-content {
-}
-
-.login__modal-labels {
+.login__labels {
   display: flex;
   flex-direction: column;
 }
 
-.login__form-label {
+.login__label {
   color: #2f71e5;
   margin-bottom: 31px;
   font-family: "Inter", sans-serif;
 }
 
-.login__form-input {
+.login__input {
   width: 100%;
   border-top: none;
   border-bottom: 1px solid #b6bcbf;
@@ -61,26 +58,26 @@
   font-size: 14px;
 }
 
-.login__form-input::placeholder {
+.login__input::placeholder {
   color: #b6bcbf;
 }
 
-.login__form-input:focus {
+.login__input:focus {
   outline: none;
   border-bottom: 2px solid black;
 }
 
-.login__form-error {
+.login__error {
   color: red;
 }
 
-.login__form-footer {
+.login__footer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.login__form-submit-btn {
+.login__submit-btn {
   max-width: 358px;
   width: 100%;
   height: 64px;
@@ -95,7 +92,7 @@
   line-height: 24px;
 }
 
-.login__form-submit-btn:disabled {
+.login__submit-btn:disabled {
   max-width: 358px;
   width: 100%;
   height: 64px;
@@ -110,7 +107,7 @@
   line-height: 24px;
 }
 
-.login__form-footer-sign-up-btn {
+.login__sign-up-btn {
   text-decoration: none;
   font-family: "Inter", sans-serif;
   font-size: 14px;
@@ -120,7 +117,7 @@
 }
 
 @media screen and (max-width: 425px) {
-  .login__modal-close-btn {
+  .login__close-btn {
     right: 16px;
     width: 24px;
     height: 24px;

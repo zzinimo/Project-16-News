@@ -1,4 +1,4 @@
-.signUp__modal {
+.signUp {
   position: fixed;
   top: 0;
   left: 0;
@@ -24,7 +24,7 @@
   border-radius: 16px;
 }
 
-.signUp__modal-close-btn {
+.signUp__close-btn {
   position: absolute;
   right: -40px;
   top: -60px;
@@ -33,27 +33,27 @@
   /* margin-right: 80px; */
 }
 
-.signUp__form-title {
+.signUp__title {
   margin-bottom: 22px;
   font-family: "Roboto", sans-serif;
   font-size: 24px;
 }
 
-.signUp__modal-content {
+.signUp__content {
 }
 
-.signUp__modal-labels {
+.signUp__labels {
   display: flex;
   flex-direction: column;
 }
 
-.signUp__form-label {
+.signUp__label {
   color: #2f71e5;
   margin-bottom: 31px;
   font-family: "Inter", sans-serif;
 }
 
-.signUp__form-input {
+.signUp__input {
   width: 100%;
   border-top: none;
   border-bottom: 1px solid #b6bcbf;
@@ -64,20 +64,20 @@
   font-size: 14px;
 }
 
-.signUp__form-input:focus {
+.signUp__input:focus {
   outline: none;
   border-bottom: 2px solid black;
 }
 
-.signUp__form-footer {
+.signUp__footer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.signUp__form-error {
+.signUp__error {
   color: red;
 }
-.signUp__form-btn {
+.signUp__btn {
   max-width: 358px;
   width: 100%;
   height: 64px;
@@ -92,7 +92,7 @@
   line-height: 24px;
 }
 
-.signUp__form-btn:disabled {
+.signUp__btn:disabled {
   max-width: 358px;
   width: 100%;
   height: 64px;
@@ -107,7 +107,7 @@
   line-height: 24px;
 }
 
-.signUp__form-footer-sign-in-btn {
+.signUp__sign-in-btn {
   text-decoration: none;
   font-family: "Inter", sans-serif;
   font-size: 14px;

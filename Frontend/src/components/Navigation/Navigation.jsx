@@ -1,4 +1,4 @@
-import { activeModalContext } from "../../contexts";
+import { ActiveModalContext } from "../../contexts";
 import "./Navigation.css";
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -9,10 +9,9 @@ function Navigation({
   isLoggedIn,
   userName,
   handleLogOutClick,
-  isOpen,
   variant = "home",
 }) {
-  const { activeModal, setActiveModal } = useContext(activeModalContext);
+  const { setActiveModal } = useContext(ActiveModalContext);
   const location = useLocation();
 
   const isProfile = variant === "profile";
@@ -20,11 +19,13 @@ function Navigation({
   const isSavedPage = location.pathname === "/saved-news";
 
   const handleSignInButtonClick = () => {
-    !isLoggedIn ? setActiveModal("loginModal") : "";
+    if (!isLoggedIn) {
+      setActiveModal("loginModal");
+    }
   };
 
   return (
-    <div className="navigation__content-buttons">
+    <nav className="navigation__content-buttons">
       <Link
         to="/"
         className={`navigation__content-button navigation__content-button_type_home ${isProfile ? "navigation__content-button_profile" : ""} ${isHomePage ? "navigation__content-button_active" : ""}`}
@@ -40,6 +41,7 @@ function Navigation({
         </Link>
       )}
       <button
+        type="button"
         onClick={handleSignInButtonClick}
         className={`navigation__content-button navigation__content-button_type_sign-in ${isProfile ? "navigation__content-button_profile" : ""}`}
       >
@@ -54,7 +56,7 @@ function Navigation({
           ""
         )}
       </button>
-    </div>
+    </nav>
   );
 }
 

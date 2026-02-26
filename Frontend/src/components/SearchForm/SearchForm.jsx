@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
-import { isLoadingContext } from "../../contexts";
+import { useContext } from "react";
+import { IsLoadingContext } from "../../contexts";
 import "./SearchForm.css";
 
 function SearchForm({ handleSearchButtonClick, userSearch, setUserSearch }) {
-  const { isLoading, setIsLoading } = useContext(isLoadingContext);
+  const { setIsLoading } = useContext(IsLoadingContext);
 
   const handleInputChange = (e) => {
     setUserSearch(e.target.value);
@@ -19,16 +19,16 @@ function SearchForm({ handleSearchButtonClick, userSearch, setUserSearch }) {
   };
 
   return (
-    <form className="search__container" onSubmit={handleSubmit}>
+    <form className="search" onSubmit={handleSubmit}>
       <input
         type="text"
         name="text"
         value={userSearch}
-        className="search__container-input"
+        className="search__input"
         placeholder="Enter topic"
         onChange={handleInputChange}
       />
-      <button type="submit" className="search__container-input-button">
+      <button type="submit" className="search__button">
         Search
       </button>
     </form>

@@ -24,18 +24,18 @@ function ProfilePage({ savedCards, userSearch, handleDeleteClick, userName }) {
   }
 
   return (
-    <div className="profile__page-content">
-      <div className="profile__page-text-container">
-        <h3 className="profile__page-main-title">Saved articles</h3>
-        <h1 className="profile__page-sub-title">
+    <section className="profile">
+      <div className="profile__text-container">
+        <h3 className="profile__title">Saved articles</h3>
+        <h1 className="profile__subtitle">
           {userName || "User"}, you have {savedCards.length} saved articles
         </h1>
-        <p className="profile__page-sub-text">
+        <p className="profile__text">
           By keywords: <strong>{keywordText}</strong>
         </p>
       </div>
 
-      <ul className="profile__page-card-container">
+      <ul className="profile__card-list">
         {savedCards.map((individualCard) => (
           <Card
             key={individualCard.url}
@@ -47,7 +47,7 @@ function ProfilePage({ savedCards, userSearch, handleDeleteClick, userName }) {
           />
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 

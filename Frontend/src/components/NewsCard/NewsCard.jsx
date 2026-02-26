@@ -29,12 +29,10 @@ function NewsCard({
   };
 
   return (
-    <div className="card__section">
+    <section className="newscard">
       {searchAttempted && !isLoading && cards.length < 1 && <NotFound />}
-      {cards.length > 0 && (
-        <h1 className="card__section-title">Search results</h1>
-      )}
-      <ul className="card__container">
+      {cards.length > 0 && <h1 className="newscard__title">Search results</h1>}
+      <ul className="newscard__list">
         {cards.slice(0, cardsToShow).map((card) => (
           <Card
             key={card.url}
@@ -49,16 +47,13 @@ function NewsCard({
         ))}
       </ul>
       {cards.length > 0 && cardsToShow < cards.length && (
-        <div className="card__section-button-container">
-          <button
-            onClick={handleShowMoreClick}
-            className="card__section-button"
-          >
+        <div className="newscard__button-container">
+          <button onClick={handleShowMoreClick} className="newscard__button">
             Show More
           </button>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

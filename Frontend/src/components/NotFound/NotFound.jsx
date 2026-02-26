@@ -3,15 +3,13 @@ import notFound from "../../assets/notFound.svg";
 
 function NotFound() {
   return (
-    <>
-      <div className="nothing__found-container">
-        <img className="nothing__found-image" src={notFound} alt="" />
-        <h1 className="nothing__found-title">Nothing Found</h1>
-        <p className="nothing__found-sub-text">
-          Sorry, but nothing matched your search terms
-        </p>
-      </div>
-    </>
+    <div className="notFound">
+      <img className="notFound__image" src={notFound} alt="Not Found" />
+      <h1 className="notFound__title">Nothing Found</h1>
+      <p className="notFound__text">
+        Sorry, but nothing matched your search terms
+      </p>
+    </div>
   );
 }
 

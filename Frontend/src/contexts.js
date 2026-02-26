@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-export const isLoadingContext = createContext();
-export const activeModalContext = createContext();
+export const IsLoadingContext = createContext();
+export const ActiveModalContext = createContext();

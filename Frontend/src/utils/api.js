@@ -3,7 +3,7 @@
 // /saved-news route.
 
 export const getItems = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     resolve([
       {
         _id: "65f7368dfb74bd6a92114c85",
@@ -21,15 +21,12 @@ export const getItems = () => {
 
 export function saveArticle(article) {
   // article is a search result from the NewsAPI
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     resolve({
       _id: "65f7371e7bce9e7d331b11a0",
       url: article,
-      url, // Use the properties the newsAPI gives you, I just made these up
       title: article.title,
       imageUrl: article.imagUrl,
-      // whatever other properties from the newsAPI-given article object you saved to the database
     });
   });
-  ddddddddddddddddd;
 }

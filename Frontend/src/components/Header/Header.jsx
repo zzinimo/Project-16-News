@@ -18,7 +18,9 @@ function Header({
   const location = useLocation();
 
   const [isOpen, setIsOpen] = useState(false);
-  const items = isLoggedIn ? ["Home", "Profile"] : ["Home", "Sign in"];
+  const items = isLoggedIn
+    ? ["Home", "Saved Articles", "Profile"]
+    : ["Home", "Sign in"];
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -30,6 +32,8 @@ function Header({
     } else if (item === "Home") {
       navigate("/");
     } else if (item === "Profile" && isLoggedIn) {
+      navigate("/saved-news");
+    } else if (item === "Saved Articles") {
       navigate("/saved-news");
     }
     setIsOpen(false);
@@ -46,61 +50,59 @@ function Header({
     };
   }, [isOpen]);
   return (
-    <>
-      <div
-        className={`header ${variant === "profile" ? "header_profile" : ""} ${isOpen ? "header_dropdown-open" : ""}`}
-      >
-        <div className="header__content">
-          <div className="header__content-anchor">
-            <h1
-              style={
-                location.pathname === "/saved-news"
-                  ? isOpen
-                    ? { color: "white" }
-                    : { color: "black" }
-                  : { color: "white" }
-              }
-              className="header__content-title"
-            >
-              NewsExplorer{" "}
-            </h1>
-            <Navigation
-              userName={userName}
-              isLoggedIn={isLoggedIn}
-              variant={variant}
-              handleLogOutClick={handleLogOutClick}
-              isOpen={isOpen}
-            />
-            {isOpen && (
-              <DropdownMenu
-                isOpen={isOpen}
-                items={items}
-                handleItemClick={handleItemClick}
-                setActiveModal={setActiveModal}
-              />
-            )}
-          </div>
-          <button
-            className="header__menu-button"
-            type="button"
-            aria-label="Open menu"
+    <header
+      className={`header ${variant === "profile" ? "header_profile" : ""} ${isOpen ? "header_dropdown-open" : ""}`}
+    >
+      <div className="header__wrapper">
+        <div className="header__anchor">
+          <h1
+            style={
+              location.pathname === "/saved-news"
+                ? isOpen
+                  ? { color: "white" }
+                  : { color: "black" }
+                : { color: "white" }
+            }
+            className="header__title"
           >
-            <img
-              onClick={toggleMenu}
-              className="header__menu-icon"
-              src={
-                location.pathname === "/saved-news"
-                  ? isOpen
-                    ? menuIcon
-                    : menuDark
-                  : menuIcon
-              }
-              alt="Menu"
+            NewsExplorer{" "}
+          </h1>
+          <Navigation
+            userName={userName}
+            isLoggedIn={isLoggedIn}
+            variant={variant}
+            handleLogOutClick={handleLogOutClick}
+            isOpen={isOpen}
+          />
+          {isOpen && (
+            <DropdownMenu
+              isOpen={isOpen}
+              items={items}
+              handleItemClick={handleItemClick}
+              setActiveModal={setActiveModal}
             />
-          </button>
+          )}
         </div>
+        <button
+          className="header__menu-btn"
+          type="button"
+          aria-label="Open menu"
+        >
+          <img
+            onClick={toggleMenu}
+            className="header__icon"
+            src={
+              location.pathname === "/saved-news"
+                ? isOpen
+                  ? menuIcon
+                  : menuDark
+                : menuIcon
+            }
+            alt="Menu"
+          />
+        </button>
       </div>
-    </>
+    </header>
   );
 }
 

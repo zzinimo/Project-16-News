@@ -1,8 +1,8 @@
-.card__section {
+.newscard {
   max-width: 1440px;
   margin-top: 80px;
 }
-.card__section-title {
+.newscard__title {
   margin-bottom: 64px;
   font-family: "Roboto-Slab-400";
   font-weight: 400;
@@ -11,7 +11,7 @@
   color: #1a1b22;
 }
 
-.card__container {
+.newscard__list {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -19,13 +19,13 @@
   gap: 15px;
 }
 
-.card__section-button-container {
+.newscard__button-container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.card__section-button {
+.newscard__button {
   width: 288px;
   height: 64px;
   border-radius: 80px;
@@ -41,21 +41,21 @@
 }
 
 @media screen and (max-width: 425px) {
-  .card__section-title {
+  .newscard__title {
     font-size: 30px;
     padding: 0 0 0 16px;
   }
-  .card__section-button {
+  .newscard__button {
     margin-bottom: 24px;
   }
 
-  .card__section-title {
+  .newscard__title {
     margin-bottom: 58px;
   }
 }
 
 @media screen and (min-width: 426px) and (max-width: 768px) {
-  .card__section-button {
+  .newscard__button {
     margin-top: 32px;
   }
 }
