@@ -3,7 +3,7 @@ import "./Preloader.css";
 function Preloader() {
   return (
     <div className="preloader">
-      <div className="circle-preloader"></div>
+      <div className="preloader__circle"></div>
     </div>
   );
 }

@@ -5,7 +5,6 @@ import Navigation from "../Navigation/Navigation";
 import menuIcon from "../../assets/menu.svg";
 import menuDark from "../../assets/menuDark.svg";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
-import closeButton from "../../assets/closeButton.svg";
 
 function Header({
   isLoggedIn,

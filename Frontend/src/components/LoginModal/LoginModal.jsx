@@ -1,5 +1,5 @@
 import "./LoginModal.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { authorize } from "../../utils/auth";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -26,9 +26,9 @@ function LoginModal({ setActiveModal, setIsLoggedIn }) {
   };
 
   //close sign in modal
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setActiveModal("");
-  };
+  }, [setActiveModal]);
 
   const handleSignupBtnClick = () => {
     setActiveModal("signUpModal");
@@ -40,7 +40,7 @@ function LoginModal({ setActiveModal, setIsLoggedIn }) {
       const token = await authorize(formValue.email, formValue.password);
       localStorage.setItem("token", token.token);
       setIsLoggedIn(true);
-      setActiveModal("");
+      handleCloseModal();
     } catch (err) {
       console.error(err);
     }
@@ -49,13 +49,13 @@ function LoginModal({ setActiveModal, setIsLoggedIn }) {
   useEffect(() => {
     const handleEscapeKey = (e) => {
       if (e.key === "Escape") {
-        setActiveModal("");
+        handleCloseModal();
       }
     };
 
     const handleOverlayClick = (e) => {
       if (e.target.classList.contains("login")) {
-        setActiveModal("");
+        handleCloseModal();
       }
     };
 
@@ -66,7 +66,7 @@ function LoginModal({ setActiveModal, setIsLoggedIn }) {
       document.removeEventListener("keydown", handleEscapeKey);
       document.removeEventListener("click", handleOverlayClick);
     };
-  }, [setActiveModal]);
+  }, [handleCloseModal]);
 
   return (
     <ModalWithForm

@@ -9,7 +9,6 @@ function Card({
   isLoggedIn,
   clickedUrl,
   showDeleteBtn,
-  userSearch,
   handleDeleteClick,
   variant = "default",
 }) {

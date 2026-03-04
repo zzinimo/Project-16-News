@@ -10,7 +10,6 @@ function NewsCard({
   isLoggedIn,
   clickedUrl,
   handleDeleteClick,
-  setSearchAttempted,
   isLoading,
   searchAttempted,
 }) {
