@@ -27,6 +27,8 @@ import NewsCard from "../NewsCard/NewsCard";
 import { getNews } from "../../utils/NewsApi";
 import { checkToken } from "../../utils/auth";
 
+const formatDate = (date) => date.toISOString().split("T")[0];
+
 function App() {
   // state
   const [activeModal, setActiveModal] = useState("");
@@ -78,7 +80,11 @@ function App() {
 
   const handleSearchButtonClick = (searchTerm) => {
     setSearchAttempted(true);
-    return getNews(searchTerm, "2026-02-16", "2026-02-23")
+    const to = new Date();
+    const from = new Date(to);
+    from.setDate(to.getDate() - 7);
+
+    return getNews(searchTerm, formatDate(from), formatDate(to))
       .then((data) => {
         setCards(data.articles);
         setIsLoading(false);
